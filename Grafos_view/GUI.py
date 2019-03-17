@@ -1,6 +1,7 @@
 import pygame
 import sys
 from .Cursor import Cursor
+from .Boton import Boton
 
 pygame.init()
 
@@ -17,14 +18,18 @@ class GUI:
         pygame.display.set_caption("Grafo")
         fuente = pygame.font.SysFont("Comic Sans MS", 30)
         color = (0, 255, 255)
+        imagen = pygame.image.load("/run/media/josec/Jose Cruz/Documentos/Pycharm Projects/Grafos/Imágenes/boton.png")
+        imagen1 = pygame.image.load("/run/media/josec/Jose Cruz/Documentos/Pycharm Projects/Grafos/Imágenes/boton1.png")
+        boton = Boton(imagen, imagen1, 200, 50)
 
         while True:
             for evento in pygame.event.get():
                 if evento.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
-            self.cursor.update()
             ventana.fill((255, 255, 255))
+            self.cursor.update()
+            boton.update(ventana, self.cursor)
             if self.grafo is None:
                 print("No hay grafo")
                 pygame.quit()
