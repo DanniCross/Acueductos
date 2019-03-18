@@ -14,7 +14,7 @@ class GUI:
         self.pintar()
 
     def pintar(self):
-        icon = pygame.image.load("I:\\Archivos de la U\\Mi principe\\ProyectoII estructuras\\Acueductos\\Imágenes\\acueducto.jpg")
+        icon = pygame.image.load("/run/media/josec/Jose Cruz/Documentos/Pycharm Projects/Grafos/Imágenes/acueducto.jpg")
         icon = pygame.transform.scale(icon, (32, 32))
         pygame.display.set_icon(icon)
         ventana = pygame.display.set_mode((800, 600))
@@ -22,10 +22,8 @@ class GUI:
         fuente = pygame.font.SysFont("Arial Narrow", 30)
         fuenteb = pygame.font.SysFont("Arial Narrow", 25)
         color = (0, 255, 255)
-        imagen1 = pygame.image.load("I:\\Archivos de la U\\Mi principe\\ProyectoII estructuras"
-                                    "\\Acueductos\\Imágenes\\boton.png")
-        imagen = pygame.image.load("I:\\Archivos de la U\\Mi principe\\ProyectoII estructuras"
-                                   "\\Acueductos\\Imágenes\\boton1.png")
+        imagen1 = pygame.image.load("/run/media/josec/Jose Cruz/Documentos/Pycharm Projects/Grafos/Imágenes/boton.png")
+        imagen = pygame.image.load("/run/media/josec/Jose Cruz/Documentos/Pycharm Projects/Grafos/Imágenes/boton1.png")
         imagen = pygame.transform.scale(imagen, (150, 80))
         imagen1 = pygame.transform.scale(imagen1, (150, 80))
         boton = Boton(imagen, imagen1, 50, 50)
