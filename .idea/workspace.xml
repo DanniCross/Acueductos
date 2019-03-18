@@ -2,9 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3b74b04d-6683-4e63-b239-805eccab6a92" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Grafos.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Grafos.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Grafos_main/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Grafos_main/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Grafos_view/Boton.py" beforeDir="false" afterPath="$PROJECT_DIR$/Grafos_view/Boton.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Grafos_view/GUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/Grafos_view/GUI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Imágenes/7deb9ad998b29cce32d1688c81f32186.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Imágenes/fbbede9ed167978443e52fe9a1c87664.jpg" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,8 +22,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Grafos_view/GUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="29" column="41" selection-start-line="29" selection-start-column="41" selection-end-line="29" selection-end-column="41" />
+            <state relative-caret-position="142">
+              <caret line="37" column="61" selection-start-line="37" selection-start-column="61" selection-end-line="37" selection-end-column="61" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -29,7 +34,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Grafos_view/Cursor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
+            <state relative-caret-position="170">
               <caret line="10" selection-start-line="10" selection-end-line="10" />
             </state>
           </provider>
@@ -38,8 +43,23 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Grafos_view/Boton.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="51" selection-start-line="8" selection-start-column="51" selection-end-line="8" selection-end-column="51" />
+            <state relative-caret-position="227">
+              <caret line="34" column="54" selection-start-line="34" selection-start-column="54" selection-end-line="34" selection-end-column="54" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Grafos_main/main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="33" lean-forward="true" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -63,8 +83,8 @@
         <option value="$PROJECT_DIR$/Grafos_clases/Arista.py" />
         <option value="$PROJECT_DIR$/Grafos_clases/Grafo.py" />
         <option value="$PROJECT_DIR$/Grafos_clases/Recorridos.py" />
-        <option value="$PROJECT_DIR$/Grafos_main/main.py" />
         <option value="$PROJECT_DIR$/Grafos_view/Cursor.py" />
+        <option value="$PROJECT_DIR$/Grafos_main/main.py" />
         <option value="$PROJECT_DIR$/Grafos_view/GUI.py" />
         <option value="$PROJECT_DIR$/Grafos_view/Boton.py" />
       </list>
@@ -86,23 +106,13 @@
         <subPane>
           <expand>
             <path>
-              <item name="Grafos" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Grafos" type="462c0819:PsiDirectoryNode" />
+              <item name="Acueductos" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Acueductos" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Grafos" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Grafos" type="462c0819:PsiDirectoryNode" />
-              <item name="Grafos_clases" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Grafos" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Grafos" type="462c0819:PsiDirectoryNode" />
+              <item name="Acueductos" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Acueductos" type="462c0819:PsiDirectoryNode" />
               <item name="Grafos_main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Grafos" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Grafos" type="462c0819:PsiDirectoryNode" />
-              <item name="Grafos_view" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -112,7 +122,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Grafos2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
@@ -205,15 +215,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1366" height="768" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24944155" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24925596" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4981385" weight="0.32753164" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4981385" weight="0.32733223" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39968404" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -245,16 +254,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Grafos_main/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="14" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Grafos_clases/Recorridos.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -271,25 +270,38 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Grafos_view/Cursor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
+        <state relative-caret-position="170">
           <caret line="10" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Grafos_view/GUI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="29" column="41" selection-start-line="29" selection-start-column="41" selection-end-line="29" selection-end-column="41" />
+        <state relative-caret-position="142">
+          <caret line="37" column="61" selection-start-line="37" selection-start-column="61" selection-end-line="37" selection-end-column="61" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Grafos_main/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="33" lean-forward="true" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Grafos_view/Boton.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="51" selection-start-line="8" selection-start-column="51" selection-end-line="8" selection-end-column="51" />
+        <state relative-caret-position="227">
+          <caret line="34" column="54" selection-start-line="34" selection-start-column="54" selection-end-line="34" selection-end-column="54" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

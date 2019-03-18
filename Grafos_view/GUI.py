@@ -14,22 +14,34 @@ class GUI:
         self.pintar()
 
     def pintar(self):
+        icon = pygame.image.load("I:\\Archivos de la U\\Mi principe\\ProyectoII estructuras\\Acueductos\\Imágenes\\acueducto.jpg")
+        icon = pygame.transform.scale(icon, (32, 32))
+        pygame.display.set_icon(icon)
         ventana = pygame.display.set_mode((800, 600))
         pygame.display.set_caption("Grafo")
-        fuente = pygame.font.SysFont("Comic Sans MS", 30)
+        fuente = pygame.font.SysFont("Arial Narrow", 30)
+        fuenteb = pygame.font.SysFont("Arial Narrow", 25)
         color = (0, 255, 255)
-        imagen = pygame.image.load("/run/media/josec/Jose Cruz/Documentos/Pycharm Projects/Grafos/Imágenes/boton.png")
-        imagen1 = pygame.image.load("/run/media/josec/Jose Cruz/Documentos/Pycharm Projects/Grafos/Imágenes/boton1.png")
-        boton = Boton(imagen, imagen1, 200, 50)
+        imagen1 = pygame.image.load("I:\\Archivos de la U\\Mi principe\\ProyectoII estructuras"
+                                    "\\Acueductos\\Imágenes\\boton.png")
+        imagen = pygame.image.load("I:\\Archivos de la U\\Mi principe\\ProyectoII estructuras"
+                                   "\\Acueductos\\Imágenes\\boton1.png")
+        imagen = pygame.transform.scale(imagen, (150, 80))
+        imagen1 = pygame.transform.scale(imagen1, (150, 80))
+        boton = Boton(imagen, imagen1, 50, 50)
+        agregar = fuenteb.render("Agregar barrio", True, (0, 0, 0))
 
         while True:
             for evento in pygame.event.get():
+                if evento.type == pygame.MOUSEBUTTONDOWN:
+                    if self.cursor.colliderect(boton.rect):
+                        self.grafo = boton.agregar(self.grafo)
                 if evento.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
             ventana.fill((255, 255, 255))
             self.cursor.update()
-            boton.update(ventana, self.cursor)
+            boton.update(ventana, self.cursor, agregar)
             if self.grafo is None:
                 print("No hay grafo")
                 pygame.quit()
