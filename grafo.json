@@ -2,33 +2,39 @@
 	"Nodo":[{
 	       "id":"Barrio A",
 	       "x":250,
-	       "y":60
+	       "y":60,
+		   "tanque":0
 
 	},
 	{
 	       "id":"Barrio B",
 	       "x":400,
-	       "y":200
+	       "y":200,
+		   "tanque":1
 	},
 	{
 	       "id":"Barrio C",
 	       "x":600,
-	       "y":200
+	       "y":200,
+		   "tanque":0
 	},
 	{
 	       "id":"Barrio D",
 	       "x":300,
-	       "y":600
+	       "y":600,
+		   "tanque":1
 	},
 	{
 	       "id":"Barrio E",
 	       "x":600,
-	       "y":550	
+	       "y":550,
+		   "tanque":0
 	},
 	{
 	       "id":"Barrio F",
 	       "x":500,
-	       "y":500
+	       "y":500,
+		   "tanque":1
 	}],
 	"Arista":[{
 		"origen":"Barrio A",

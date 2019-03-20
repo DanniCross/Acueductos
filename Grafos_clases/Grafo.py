@@ -8,11 +8,11 @@ class Grafo:
         self.aristas = []
         self.nodos = []
 
-    def add_nodo(self, iden, x, y):
-        nodo = Nodo(iden, x, y)
+    def add_nodo(self, iden, x, y, tanque):
+        nodo = Nodo(iden, x, y, tanque)
         if nodo in self.nodos:
             return
-        self.nodos.append(Nodo(iden, x, y))
+        self.nodos.append(nodo)
 
     def add_arista(self, origen, destino, peso, color):
         arista = Arista(origen, destino, peso, color)

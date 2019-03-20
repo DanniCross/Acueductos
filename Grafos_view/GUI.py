@@ -13,8 +13,10 @@ class GUI:
         self.grafo = grafo
         self.cursor = Cursor()
         self.pintar()
+        self.n = 0
 
     def screen_size(self):
+        self.n = 0
         size = (None, None)
         args = ["xrandr", "-q", "-d", ":0"]
         proc = subprocess.Popen(args, stdout=subprocess.PIPE)
@@ -26,11 +28,11 @@ class GUI:
         return size
 
     def pintar(self):
-        icon = pygame.image.load("/run/media/josec/Jose Cruz/Documentos/Pycharm Projects/Grafos/Imágenes/acueducto.jpg")
-        icon = pygame.transform.scale(icon, (32, 32))
-        pygame.display.set_icon(icon)
         size = self.screen_size()
         ventana = pygame.display.set_mode(size)
+        icon = pygame.image.load("/run/media/josec/Jose Cruz/Documentos/Pycharm Projects/Grafos/Imágenes/acueducto.png")
+        icon = pygame.transform.scale(icon, (32, 32))
+        pygame.display.set_icon(icon)
         pygame.display.set_caption("Grafo")
         fuente = pygame.font.SysFont("Arial Narrow", 30)
         fuenteb = pygame.font.SysFont("Arial Narrow", 25)
@@ -78,5 +80,8 @@ class GUI:
                                      (self.grafo.aristas[j].origen.x, self.grafo.aristas[j].origen.y),
                                      (self.grafo.aristas[j].destino.x, self.grafo.aristas[j].destino.y), 2)
                 for i in range(len(self.grafo.nodos)):
+                    if self.grafo.nodos[i].tanque is True:
+                        pygame.draw.circle(ventana, (0, 0, 250),
+                                           (self.grafo.nodos[i].x + 30, self.grafo.nodos[i].y-55), 10, 0)
                     ventana.blit(barrio, (self.grafo.nodos[i].x-45, self.grafo.nodos[i].y-55))
             pygame.display.update()

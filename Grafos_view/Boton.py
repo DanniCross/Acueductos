@@ -51,9 +51,9 @@ class Boton(pygame.sprite.Sprite):
                                 pas = False
                         i += 1
             else:
-                grafo.add_nodo(iden, x, y)
+                grafo.add_nodo(iden, x, y, False)
             if pas is True:
-                grafo.add_nodo(iden, x, y)
+                grafo.add_nodo(iden, x, y, False)
                 n = random.randint(0, len(grafo.nodos) - 1)
                 while pas:
                     if n != iden:
