@@ -1,0 +1,59 @@
+{"Grafo":[{
+	"Nodo":[{
+	       "id":"Barrio A",
+	       "x":250,
+	       "y":60
+
+	},
+	{
+	       "id":"Barrio B",
+	       "x":400,
+	       "y":200
+	},
+	{
+	       "id":"Barrio C",
+	       "x":600,
+	       "y":200
+	},
+	{
+	       "id":"Barrio D",
+	       "x":300,
+	       "y":600
+	},
+	{
+	       "id":"Barrio E",
+	       "x":600,
+	       "y":550	
+	},
+	{
+	       "id":"Barrio F",
+	       "x":500,
+	       "y":500
+	}],
+	"Arista":[{
+		"origen":"Barrio A",
+		"destino":"Barrio B",
+		"peso":5
+	},
+	{
+		"origen":"Barrio D",
+		"destino":"Barrio A",
+		"peso":4
+	},
+	{
+		"origen":"Barrio E",
+		"destino":"Barrio D",
+		"peso":10
+	},
+	{
+		"origen":"Barrio B",
+		"destino":"Barrio C",
+		"peso":2
+	},
+	{
+		"origen":"Barrio F",
+		"destino":"Barrio E",
+		"peso":5
+	}]
+  }]
+}

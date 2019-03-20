@@ -1,5 +1,6 @@
 import pygame
 import sys
+import subprocess
 from .Cursor import Cursor
 from .Boton import Boton
 
@@ -13,19 +14,32 @@ class GUI:
         self.cursor = Cursor()
         self.pintar()
 
+    def screen_size(self):
+        size = (None, None)
+        args = ["xrandr", "-q", "-d", ":0"]
+        proc = subprocess.Popen(args, stdout=subprocess.PIPE)
+        for line in proc.stdout:
+            if isinstance(line, bytes):
+                line = line.decode("utf-8")
+                if "Screen" in line:
+                    size = (int(line.split()[7]), int(line.split()[9][:-1]))
+        return size
+
     def pintar(self):
         icon = pygame.image.load("/run/media/josec/Jose Cruz/Documentos/Pycharm Projects/Grafos/Imágenes/acueducto.jpg")
         icon = pygame.transform.scale(icon, (32, 32))
         pygame.display.set_icon(icon)
-        ventana = pygame.display.set_mode((800, 600))
+        size = self.screen_size()
+        ventana = pygame.display.set_mode(size)
         pygame.display.set_caption("Grafo")
         fuente = pygame.font.SysFont("Arial Narrow", 30)
         fuenteb = pygame.font.SysFont("Arial Narrow", 25)
-        color = (0, 255, 255)
         imagen1 = pygame.image.load("/run/media/josec/Jose Cruz/Documentos/Pycharm Projects/Grafos/Imágenes/boton.png")
         imagen = pygame.image.load("/run/media/josec/Jose Cruz/Documentos/Pycharm Projects/Grafos/Imágenes/boton1.png")
         imagen = pygame.transform.scale(imagen, (150, 80))
         imagen1 = pygame.transform.scale(imagen1, (150, 80))
+        barrio = pygame.image.load("/run/media/josec/Jose Cruz/Documentos/Pycharm Projects/Grafos/Imágenes/Barrio.png")
+        barrio = pygame.transform.scale(barrio, (100, 100))
         boton = Boton(imagen, imagen1, 50, 50)
         agregar = fuenteb.render("Agregar barrio", True, (0, 0, 0))
 
@@ -64,7 +78,5 @@ class GUI:
                                      (self.grafo.aristas[j].origen.x, self.grafo.aristas[j].origen.y),
                                      (self.grafo.aristas[j].destino.x, self.grafo.aristas[j].destino.y), 2)
                 for i in range(len(self.grafo.nodos)):
-                    pygame.draw.circle(ventana, color, (self.grafo.nodos[i].x, self.grafo.nodos[i].y), 25, 0)
-                    texto = fuente.render(self.grafo.nodos[i].iden, True, (0, 0, 0))
-                    ventana.blit(texto, (self.grafo.nodos[i].x - 7, self.grafo.nodos[i].y - 8))
+                    ventana.blit(barrio, (self.grafo.nodos[i].x-45, self.grafo.nodos[i].y-55))
             pygame.display.update()
