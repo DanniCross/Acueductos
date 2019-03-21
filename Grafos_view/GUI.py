@@ -42,6 +42,10 @@ class GUI:
         imagen1 = pygame.transform.scale(imagen1, (150, 80))
         barrio = pygame.image.load("/run/media/josec/Jose Cruz/Documentos/Pycharm Projects/Grafos/Imágenes/Barrio.png")
         barrio = pygame.transform.scale(barrio, (100, 100))
+        tanque = pygame.image.load("/run/media/josec/Jose Cruz/Documentos/Pycharm Projects/Grafos/Imágenes/tanque.png")
+        tanque = pygame.transform.scale(tanque, (30, 50))
+        #fondo = pygame.image.load("/run/media/josec/Jose Cruz/Documentos/Pycharm Projects/Grafos/Imágenes/fondo.jpeg")
+        #fondo = pygame.transform.scale(fondo, size)
         boton = Boton(imagen, imagen1, 50, 50)
         agregar = fuenteb.render("Agregar barrio", True, (0, 0, 0))
 
@@ -81,7 +85,7 @@ class GUI:
                                      (self.grafo.aristas[j].destino.x, self.grafo.aristas[j].destino.y), 2)
                 for i in range(len(self.grafo.nodos)):
                     if self.grafo.nodos[i].tanque is True:
-                        pygame.draw.circle(ventana, (0, 0, 250),
-                                           (self.grafo.nodos[i].x + 30, self.grafo.nodos[i].y-55), 10, 0)
+                        ventana.blit(tanque, (self.grafo.nodos[i].x + 30, self.grafo.nodos[i].y-55))
+
                     ventana.blit(barrio, (self.grafo.nodos[i].x-45, self.grafo.nodos[i].y-55))
             pygame.display.update()
