@@ -29,12 +29,20 @@ class GUI:
                     size = (int(line.split()[7]), int(line.split()[9][:-1]))
         return size
 
+    def screen_sizeW(self):
+        user32 = ctypes.windll.user32
+        user32.SetProcessDPIAware()
+        ancho, alto = user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)
+        size = (ancho, alto)
+        return size
+
     def pintar(self):
         if os.name is "posix":
             size = self.screen_size()
             ventana = pygame.display.set_mode(size)
         else:
-            ventana = pygame.display.set_mode((0, 0), pygame.FULLSCREEN, pygame.RESIZABLE)
+            size = self.screen_sizeW()
+            ventana = pygame.display.set_mode(size, pygame.RESIZABLE)
         pygame.display.set_caption("Grafo")
         fuente = pygame.font.SysFont("Arial Narrow", 30)
         fuenteb = pygame.font.SysFont("Arial Narrow", 25)
@@ -51,15 +59,15 @@ class GUI:
                 "/run/media/josec/Jose Cruz/Documentos/Pycharm Projects/Grafos/Imágenes/tanque.png")
         else:
             icon = pygame.image.load(
-                "I:\\Archivos de la U\\Mi principe\\ProyectoII estructuras\\Acueductos\\Imágenes\\acueducto.png")
+                "..\\Imágenes\\acueducto.png")
             imagen1 = pygame.image.load(
-                "I:\\Archivos de la U\\Mi principe\\ProyectoII estructuras\\Acueductos\\Imágenes\\boton.png")
+                "..\\Imágenes\\boton.png")
             imagen = pygame.image.load(
-                "I:\\Archivos de la U\\Mi principe\\ProyectoII estructuras\\Acueductos\\Imágenes\\boton1.png")
+                "..\\Imágenes\\boton1.png")
             barrio = pygame.image.load(
-                "I:\\Archivos de la U\\Mi principe\\ProyectoII estructuras\\Acueductos\\Imágenes\\Barrio.png")
+                "..\\Imágenes\\Barrio.png")
             tanque = pygame.image.load(
-                "I:\\Archivos de la U\\Mi principe\\ProyectoII estructuras\\Acueductos\\Imágenes\\tanque.png")
+                "..\\Imágenes\\tanque.png")
         icon = pygame.transform.scale(icon, (32, 32))
         pygame.display.set_icon(icon)
         imagen = pygame.transform.scale(imagen, (150, 80))

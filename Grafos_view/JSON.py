@@ -10,7 +10,7 @@ class JSON:
         if os.name is "posix":
             fil = "/run/media/josec/Jose Cruz/Documentos/Pycharm Projects/Grafos/grafo.json"
         else:
-            fil = "I:\\Archivos de la U\\Mi principe\\ProyectoII estructuras\\Acueductos\\grafo.json"
+            fil = "..\\grafo.json"
         with open(fil) as file:
             data = json.load(file)
             for graf in data['Grafo']:
