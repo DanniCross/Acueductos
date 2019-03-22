@@ -21,7 +21,7 @@ class Boton(pygame.sprite.Sprite):
         else:
             self.actual = self.normal
         ventana.blit(self.actual, self.rect)
-        ventana.blit(agregar, (65, 83))
+        ventana.blit(agregar, (self.x, self.y + 32))
 
     def agregar(self, grafo1):
         if self is not grafo1:
@@ -31,6 +31,12 @@ class Boton(pygame.sprite.Sprite):
             i = 0
             x = random.randint(250, 1300)
             y = random.randint(60, 670)
+            n = random.randint(0, len(grafo.nodos) - 1)
+            while pas:
+                if grafo.nodos[n].iden != iden:
+                    pas = False
+                else:
+                    n = random.randint(0, len(grafo.nodos) - 1)
             if len(grafo.nodos) > 0:
                 while i in range(len(grafo.nodos)):
                     if len(grafo.nodos) == 40:
@@ -54,14 +60,9 @@ class Boton(pygame.sprite.Sprite):
                 grafo.add_nodo(iden, x, y, False)
             if pas is True:
                 grafo.add_nodo(iden, x, y, False)
-                n = random.randint(0, len(grafo.nodos) - 1)
-                while pas:
-                    if grafo.nodos[n].iden != iden:
-                        pas = False
-                    else:
-                        n = random.randint(0, len(grafo.nodos) - 1)
+
                 grafo.add_arista(grafo.buscar_nodo(iden), grafo.buscar_nodo(grafo.nodos[n].iden),
-                                 random.randint(1, 50), (0, 0, 0))
+                                 random.randint(1, 50), (186, 186, 177))
             return grafo
 
     def sobrepos(self, x, y, grafo):
@@ -71,3 +72,4 @@ class Boton(pygame.sprite.Sprite):
                     if nd.x <= x + 100 and nd.y <= y + 100:
                         return True
             return False
+

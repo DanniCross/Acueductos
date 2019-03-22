@@ -5,3 +5,4 @@ class Arista:
         self.destino = destino
         self.peso = peso
         self.color = color
+        self.obs = False

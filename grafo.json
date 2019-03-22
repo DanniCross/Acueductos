@@ -33,7 +33,7 @@
 	{
 	       "id":"Barrio F",
 	       "x":500,
-	       "y":500,
+	       "y":400,
 		   "tanque":1
 	}],
 	"Arista":[{
@@ -60,6 +60,11 @@
 		"origen":"Barrio F",
 		"destino":"Barrio E",
 		"peso":5
+	},
+	{
+		"origen":"Barrio C",
+		"destino":"Barrio F",
+		"peso":7
 	}]
   }]
 }

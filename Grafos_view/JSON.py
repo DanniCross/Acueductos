@@ -1,6 +1,7 @@
 import json
 import os
 
+
 class JSON:
 
     def Leer(self, grafo):
@@ -8,7 +9,7 @@ class JSON:
             pass
         grafo = grafo
         if os.name is "posix":
-            fil = "/run/media/josec/Jose Cruz/Documentos/Pycharm Projects/Grafos/grafo.json"
+            fil = "../grafo.json"
         else:
             fil = "..\\grafo.json"
         with open(fil) as file:
@@ -22,5 +23,5 @@ class JSON:
                     grafo.add_nodo(nodo['id'], nodo['x'], nodo['y'], t)
                 for arista in graf['Arista']:
                     grafo.add_arista(grafo.buscar_nodo(arista['origen']), grafo.buscar_nodo(arista['destino']),
-                                     arista['peso'], (0, 0, 0))
+                                     arista['peso'], (186, 186, 177))
         return grafo
