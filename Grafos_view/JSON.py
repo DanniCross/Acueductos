@@ -1,5 +1,5 @@
 import json
-
+import os
 
 class JSON:
 
@@ -7,7 +7,11 @@ class JSON:
         if self != grafo:
             pass
         grafo = grafo
-        with open('/run/media/josec/Jose Cruz/Documentos/Pycharm Projects/Grafos/grafo.json') as file:
+        if os.name is "posix":
+            fil = "/run/media/josec/Jose Cruz/Documentos/Pycharm Projects/Grafos/grafo.json"
+        else:
+            fil = "I:\\Archivos de la U\\Mi principe\\ProyectoII estructuras\\Acueductos\\grafo.json"
+        with open(fil) as file:
             data = json.load(file)
             for graf in data['Grafo']:
                 for nodo in graf['Nodo']:

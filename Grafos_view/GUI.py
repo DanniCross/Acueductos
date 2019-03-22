@@ -1,6 +1,8 @@
 import pygame
 import sys
+import os
 import subprocess
+import ctypes
 from .Cursor import Cursor
 from .Boton import Boton
 
@@ -28,21 +30,41 @@ class GUI:
         return size
 
     def pintar(self):
-        size = self.screen_size()
-        ventana = pygame.display.set_mode(size)
-        icon = pygame.image.load("/run/media/josec/Jose Cruz/Documentos/Pycharm Projects/Grafos/Imágenes/acueducto.png")
-        icon = pygame.transform.scale(icon, (32, 32))
-        pygame.display.set_icon(icon)
+        if os.name is "posix":
+            size = self.screen_size()
+            ventana = pygame.display.set_mode(size)
+        else:
+            ventana = pygame.display.set_mode((0, 0), pygame.FULLSCREEN, pygame.RESIZABLE)
         pygame.display.set_caption("Grafo")
         fuente = pygame.font.SysFont("Arial Narrow", 30)
         fuenteb = pygame.font.SysFont("Arial Narrow", 25)
-        imagen1 = pygame.image.load("/run/media/josec/Jose Cruz/Documentos/Pycharm Projects/Grafos/Imágenes/boton.png")
-        imagen = pygame.image.load("/run/media/josec/Jose Cruz/Documentos/Pycharm Projects/Grafos/Imágenes/boton1.png")
+        if os.name == "posix":
+            icon = pygame.image.load(
+                "/run/media/josec/Jose Cruz/Documentos/Pycharm Projects/Grafos/Imágenes/acueducto.png")
+            imagen1 = pygame.image.load(
+                "/run/media/josec/Jose Cruz/Documentos/Pycharm Projects/Grafos/Imágenes/boton.png")
+            imagen = pygame.image.load(
+                "/run/media/josec/Jose Cruz/Documentos/Pycharm Projects/Grafos/Imágenes/boton1.png")
+            barrio = pygame.image.load(
+                "/run/media/josec/Jose Cruz/Documentos/Pycharm Projects/Grafos/Imágenes/Barrio.png")
+            tanque = pygame.image.load(
+                "/run/media/josec/Jose Cruz/Documentos/Pycharm Projects/Grafos/Imágenes/tanque.png")
+        else:
+            icon = pygame.image.load(
+                "I:\\Archivos de la U\\Mi principe\\ProyectoII estructuras\\Acueductos\\Imágenes\\acueducto.png")
+            imagen1 = pygame.image.load(
+                "I:\\Archivos de la U\\Mi principe\\ProyectoII estructuras\\Acueductos\\Imágenes\\boton.png")
+            imagen = pygame.image.load(
+                "I:\\Archivos de la U\\Mi principe\\ProyectoII estructuras\\Acueductos\\Imágenes\\boton1.png")
+            barrio = pygame.image.load(
+                "I:\\Archivos de la U\\Mi principe\\ProyectoII estructuras\\Acueductos\\Imágenes\\Barrio.png")
+            tanque = pygame.image.load(
+                "I:\\Archivos de la U\\Mi principe\\ProyectoII estructuras\\Acueductos\\Imágenes\\tanque.png")
+        icon = pygame.transform.scale(icon, (32, 32))
+        pygame.display.set_icon(icon)
         imagen = pygame.transform.scale(imagen, (150, 80))
         imagen1 = pygame.transform.scale(imagen1, (150, 80))
-        barrio = pygame.image.load("/run/media/josec/Jose Cruz/Documentos/Pycharm Projects/Grafos/Imágenes/Barrio.png")
         barrio = pygame.transform.scale(barrio, (100, 100))
-        tanque = pygame.image.load("/run/media/josec/Jose Cruz/Documentos/Pycharm Projects/Grafos/Imágenes/tanque.png")
         tanque = pygame.transform.scale(tanque, (30, 50))
         #fondo = pygame.image.load("/run/media/josec/Jose Cruz/Documentos/Pycharm Projects/Grafos/Imágenes/fondo.jpeg")
         #fondo = pygame.transform.scale(fondo, size)
