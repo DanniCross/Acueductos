@@ -6,3 +6,5 @@ class Arista:
         self.peso = peso
         self.color = color
         self.obs = False
+        self.obsx = 0
+        self.obsy = 0

@@ -54,6 +54,7 @@ class GUI:
             barrio = pygame.image.load("../Imágenes/Barrio.png")
             tanque = pygame.image.load("../Imágenes/tanque.png")
             fondo = pygame.image.load("../Imágenes/fondo.png")
+            obstruc = pygame.image.load("../Imágenes/grieta.png")
         else:
             icon = pygame.image.load("..\\Imágenes\\acueducto.png")
             imagen1 = pygame.image.load("..\\Imágenes\\boton.png")
@@ -61,6 +62,7 @@ class GUI:
             barrio = pygame.image.load("..\\Imágenes\\Barrio.png")
             tanque = pygame.image.load("..\\Imágenes\\tanque.png")
             fondo = pygame.image.load("..\\Imágenes\\fondo.png")
+            obstruc = pygame.image.load("..\\Imágenes\\grieta.png")
         icon = pygame.transform.scale(icon, (32, 32))
         pygame.display.set_icon(icon)
         imagen = pygame.transform.scale(imagen, (160, 80))
@@ -72,6 +74,7 @@ class GUI:
         boton1 = Boton(imagen, imagen1, 50, 100)
         agregar = fuenteb.render("    Agregar barrio", True, (0, 0, 0))
         obstruccion = fuenteb.render(" Crear obstrucción", True, (0, 0, 0))
+        obstruc = pygame.transform.scale(obstruc, (50, 50))
 
         while True:
             for evento in pygame.event.get():
@@ -79,8 +82,7 @@ class GUI:
                     if self.cursor.colliderect(boton.rect):
                         self.grafo = boton.agregar(self.grafo)
                     elif self.cursor.colliderect(boton1.rect):
-                        nota = fuenteb.render("SELECCIONE TUBERIA A OBSTRUIR.", True, (0, 255, 0))
-                        ventana.blit(nota, (500, 500))
+                        pass
                 if evento.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
@@ -95,10 +97,13 @@ class GUI:
             else:
                 for j in range(0, len(self.grafo.aristas)):
                     texto1 = fuente.render(str(self.grafo.aristas[j].peso), True, (0, 0, 0))
+                    pos = self.pos_peso(j)
                     pygame.draw.line(ventana, self.grafo.aristas[j].color,
                                      (self.grafo.aristas[j].origen.x, self.grafo.aristas[j].origen.y),
                                      (self.grafo.aristas[j].destino.x, self.grafo.aristas[j].destino.y), 20)
-                    ventana.blit(texto1, self.pos_peso(j))
+                    ventana.blit(texto1, (pos[0], pos[1]))
+                    if self.grafo.aristas[j].obs is True:
+                        ventana.blit(obstruc, (self.grafo.aristas[j].obsx, self.grafo.aristas[j].obsy))
                 for i in range(len(self.grafo.nodos)):
                     if self.grafo.nodos[i].tanque is True:
                         ventana.blit(tanque, (self.grafo.nodos[i].x + 30, self.grafo.nodos[i].y-55))
@@ -129,5 +134,5 @@ class GUI:
         elif (tipo is 1 and tipo2 is 2) or (tipo is 2 and tipo2 is 1):
             posx += -30
             posy += -30
-        pos = (posx, posy)
+        pos = [posx, posy]
         return pos
