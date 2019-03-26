@@ -14,9 +14,9 @@ class Grafo:
             return
         self.nodos.append(nodo)
 
-    def add_arista(self, origen, destino, peso, color):
-        arista = Arista(origen, destino, peso, color)
-        auxar = Arista(destino, origen, peso, color)
+    def add_arista(self, origen, destino, peso, color, imagen):
+        arista = Arista(origen, destino, peso, color, imagen)
+        auxar = Arista(destino, origen, peso, color, imagen)
         if arista in self.aristas or auxar in self.aristas:
             return
         self.aristas.append(arista)

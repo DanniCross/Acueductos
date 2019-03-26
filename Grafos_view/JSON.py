@@ -1,10 +1,13 @@
 import json
 import os
+import pygame
 
 
 class JSON:
 
     def Leer(self, grafo):
+        gota = pygame.image.load("../Imágenes/gota.png")
+        gota = pygame.transform.scale(gota, (20, 20))
         if self != grafo:
             pass
         grafo = grafo
@@ -23,5 +26,5 @@ class JSON:
                     grafo.add_nodo(nodo['id'], nodo['x'], nodo['y'], t)
                 for arista in graf['Arista']:
                     grafo.add_arista(grafo.buscar_nodo(arista['origen']), grafo.buscar_nodo(arista['destino']),
-                                     arista['peso'], (186, 186, 177))
+                                     arista['peso'], (186, 186, 177), gota)
         return grafo
