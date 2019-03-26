@@ -21,7 +21,6 @@ class Grafo:
             return
         self.aristas.append(arista)
         origen.adyacencias.append(destino)
-        destino.adyacencias.append(origen)
 
     def buscar_nodo(self, iden):
         for nodo in self.nodos:

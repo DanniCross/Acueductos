@@ -19,10 +19,11 @@ class GUI:
     def __init__(self, grafo):
         self.x = 0
         self.y = 0
-        self.velocidad = 0.2
+        self.posible = False
         self.sentido = False
         self.obs = False
         self.conexion = False
+        self.tan = False
         self.aux = []
         self.grafo = grafo
         self.cursor = Cursor()
@@ -91,14 +92,19 @@ class GUI:
         boton2 = Boton(imagen, imagen1, 50, 150)
         boton3 = Boton(imagen, imagen1, 50, 200)
         boton4 = Boton(imagen, imagen1, 50, 250)
+        boton5 = Boton(imagen, imagen1, 50, 300)
         agregar = fuenteb.render("    Agregar barrio", True, (0, 0, 0))
         obstruccion = fuenteb.render(" Crear obstrucción", True, (0, 0, 0))
         addarist = fuenteb.render("     Añadir tuberia", True, (0, 0, 0))
         sentido = fuenteb.render("  Cambiar sentido", True, (0, 0, 0))
+        addTanque = fuenteb.render("   Añadir tanque", True, (0, 0, 0))
         desbordar = fuenteb.render(" Desbordar tanque", True, (0, 0, 0))
         obstruc = pygame.transform.scale(obstruc, (30, 40))
         obs = fuente.render("SELECCIONE TUBERIA A OBSTRUIR", True, (255, 0, 0))
-        sent= fuente.render("SELECCIONE TUBERIA A LA CUAL LE CAMBIARÁ EL SENTIDO", True, (255, 0, 0))
+        sent = fuente.render("SELECCIONE TUBERIA A LA CUAL LE CAMBIARÁ EL SENTIDO", True, (255, 0, 0))
+        tanq = fuente.render("  SELECCIONE UN BARRIO DONDE SE CREARÁ UN TANQUE,", True, (255, 0, 0))
+        tanq2 = fuente.render("(LA POSICION QUE SE SUGIERE EN PANTALLA ES OPCIONAL)", True, (255, 0, 0))
+        conex = fuente.render("ELIJA LOS BARRIOS ORIGEN Y DESTINO PARA LA NUEVA TUBERIA", True, (255, 0, 0))
         gota = pygame.transform.scale(gota, (20, 20))
         capacidad = fuenteb.render("Capacidad máxima de los tanques: 500", True, (255, 255, 255))
 
@@ -138,16 +144,49 @@ class GUI:
                                 temp = arist.origen
                                 arist.origen = arist.destino
                                 arist.destino = temp
+                                arist.origen.adyacencias.append(arist.destino)
+                                arist.destino.adyacencias.remove(arist.origen)
                                 break
                         self.sentido = False
+                    elif self.cursor.colliderect(boton4.rect):
+                        self.tan = True
+                    elif self.tan:
+                        for nodo in self.grafo.nodos:
+                            if (nodo.line.x < pygame.mouse.get_pos()[0] < nodo.line.right and nodo.line.y
+                                    < pygame.mouse.get_pos()[1] < nodo.line.bottom):
+                                nodo.tanque = True
+                                break
+                        self.tan = False
                 if evento.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
-
-            if self.obs:
-                ventana.blit(obs, (600, 20))
-                pygame.display.update()
             if self.conexion:
+                ventana.blit(conex, (500, 20))
+                pygame.display.update()
+            if self.tan:
+                ventana.blit(tanq, (500, 20))
+                ventana.blit(tanq2, (500, 40))
+                posibles = []
+                for nodo in self.grafo.nodos:
+                    self.posible = True
+                    for node in self.grafo.nodos:
+                        if nodo.tanque is not True:
+                            for nd in node.adyacencias:
+                                if node.tanque:
+                                    if nd == nodo:
+                                        self.posible = False
+                                    elif self.posible is not False:
+                                        self.posible = True
+                    if self.posible:
+                        posibles.append(nodo)
+                for n in posibles:
+                    if n.tanque is not True:
+                        ventana.blit(tanque, (n.x + 55, n.y - 20))
+                pygame.display.update()
+            if self.obs:
+                ventana.blit(obs, (550, 20))
+                pygame.display.update()
+            """if self.conexion:
                 grafo = Grafo()
                 for nodo in self.grafo.nodos:
                     grafo.add_nodo(nodo.iden, nodo.x, nodo.y, nodo.tanque)
@@ -163,9 +202,9 @@ class GUI:
                         pygame.draw.line(ventana, ari.color, (ari.origen.line.centerx, ari.origen.line.centery),
                                          (ari.destino.line.centerx, ari.destino.line.centery), 30))
                     ventana.blit(texto1, (ari.line.centerx, ari.line.centery))
-                pygame.display.update()
+                pygame.display.update()"""
             if self.sentido:
-                ventana.blit(sent, (600, 20))
+                ventana.blit(sent, (550, 20))
                 pygame.display.update()
             ventana.blit(fondo, (0, 0))
             self.cursor.update()
@@ -173,7 +212,8 @@ class GUI:
             boton1.update(ventana, self.cursor, obstruccion)
             boton2.update(ventana, self.cursor, addarist)
             boton3.update(ventana, self.cursor, sentido)
-            boton4.update(ventana, self.cursor, desbordar)
+            boton4.update(ventana, self.cursor, addTanque)
+            boton5.update(ventana, self.cursor, desbordar)
             ventana.blit(capacidad, (50, 10))
 
             for j, ari in enumerate(self.grafo.aristas):
@@ -240,10 +280,21 @@ class GUI:
                 if nodo.tanque:
                     if nodo.nivel < 0:
                         nodo.nivel = 0
-                    niv = fuentec.render(str(int(nodo.nivel)), True, (0, 0, 0))
+                    if nodo.nivel > nodo.capacidad:
+                        niv = fuentec.render(str(int(nodo.nivel)), True, (255, 0, 0))
+                    else:
+                        niv = fuentec.render(str(int(nodo.nivel)), True, (0, 0, 0))
                     ventana.blit(tanque, (nodo.x + 55, nodo.y - 20))
                     if nodo.nivel >= nodo.capacidad - 25:
                         pygame.draw.rect(ventana, (0, 0, 255), (nodo.x + 62, nodo.y - 10, 28, 38))
+                        if 500 < nodo.nivel <= 550:
+                            pygame.draw.rect(ventana, (0, 0, 255), (nodo.x + 65, nodo.y + 20, 40, 10))
+                        elif 550 < nodo.nivel <= 600:
+                            pygame.draw.rect(ventana, (0, 0, 255), (nodo.x + 65, nodo.y + 20, 45, 10))
+                        elif 600 < nodo.nivel <= 650:
+                            pygame.draw.rect(ventana, (0, 0, 255), (nodo.x + 65, nodo.y + 20, 50, 10))
+                        elif 650 < nodo.nivel:
+                            pygame.draw.rect(ventana, (0, 0, 255), (nodo.x + 65, nodo.y + 20, 55, 10))
                     elif nodo.nivel >= nodo.capacidad - 50:
                         pygame.draw.rect(ventana, (0, 0, 255), (nodo.x + 62, nodo.y - 8, 28, 36))
                     elif nodo.nivel >= nodo.capacidad - 75:
@@ -272,6 +323,7 @@ class GUI:
                         pygame.draw.rect(ventana, (0, 0, 255), (nodo.x + 62, nodo.y + 16, 28, 12))
                     elif nodo.nivel >= nodo.capacidad - 475:
                         pygame.draw.rect(ventana, (0, 0, 255), (nodo.x + 62, nodo.y + 18, 28, 10))
+
                     ventana.blit(niv, (nodo.x + 62, nodo.y - 15))
                 nodo.line = ventana.blit(barrio, (nodo.x, nodo.y))
 
