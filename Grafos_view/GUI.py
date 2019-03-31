@@ -203,6 +203,7 @@ class GUI:
                                          (ari.destino.line.centerx, ari.destino.line.centery), 30))
                     ventana.blit(texto1, (ari.line.centerx, ari.line.centery))
                 pygame.display.update()"""
+
             if self.sentido:
                 ventana.blit(sent, (550, 20))
                 pygame.display.update()
@@ -213,7 +214,7 @@ class GUI:
             boton2.update(ventana, self.cursor, addarist)
             boton3.update(ventana, self.cursor, sentido)
             boton4.update(ventana, self.cursor, addTanque)
-            boton5.update(ventana, self.cursor, desbordar)
+            """boton5.update(ventana, self.cursor, desbordar)"""
             ventana.blit(capacidad, (50, 10))
 
             for j, ari in enumerate(self.grafo.aristas):

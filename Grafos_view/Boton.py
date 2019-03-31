@@ -69,9 +69,18 @@ class Boton(pygame.sprite.Sprite):
                 else:
                     tanque = False
                 grafo.add_nodo(iden, x, y, tanque)
+                actual = grafo.buscar_nodo(iden)
+                for nodo in grafo.nodos:
+                    print("hola")
+                    if ((actual.x == nodo.x + 100 or actual.x == nodo.x - 100)
+                            and (actual.y == nodo.y + 100 or actual.y == nodo.y - 100)):
+                        print("hola2")
+                        grafo.add_arista(grafo.buscar_nodo(iden), grafo.buscar_nodo(grafo.nodos[n].iden),
+                                         random.randint(1, 50), (186, 186, 177), imagen)
+                        print(actual.x, actual.y)
+                        print(nodo.x, nodo.y)
+                        break
 
-                grafo.add_arista(grafo.buscar_nodo(iden), grafo.buscar_nodo(grafo.nodos[n].iden),
-                                 random.randint(1, 50), (186, 186, 177), imagen)
             return grafo
 
     def sobrepos(self, x, y, grafo):
